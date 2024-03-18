@@ -19,3 +19,9 @@ Ingat bahwa kode status 200 berarti semuanya sudah baik dijalankan. Selanjutnya 
 ![commit 2 ss](./README/reflection3.png)
 
 Perhatikan bahwa pada dasarnya kita sedang melakukan pengecekan request line. Disini kita ingin melakukan apakah situs yang kita ingin kunjungi benar atau tidak. Jika request line nya benar `"GET / HTTP/1.1\r\n"`, maka itu sudah sesuai ekspektasi kita. Hal itu akan membuat kita mengeset variabel status line dan file yang ingin kita tuju, dalam kasus ini hello.html atau 404.html.
+
+## Refleksi 4
+
+Ketika saya pertama kali mencari /sleep, yang akan dilakukan adalah thread akan sleep selama 10 detik. Kemudian, thread ini akan berjalan kembali dengan normal. Jika kita memasukkan url yang biasa ke dalam ke dalam mesin pencari, yang akan terjadi adalah sleep masih akan tetap dijalankan dan kita tetap menunggu /sleep untuk selesai dijalankan.
+
+Perhatikan hal penting bahwa disini saya mengubah buf_reader dan request line menjadi tidak mutable. Hal inilah yang kemudian membuat kode "menunggu" ini perlu bekerja.
