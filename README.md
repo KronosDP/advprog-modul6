@@ -13,3 +13,9 @@ Terakhir, hasilnya akan di print denan println.
 ![commit 2 ss](./README/reflection2.png)
 
 Ingat bahwa kode status 200 berarti semuanya sudah baik dijalankan. Selanjutnya contents adalah untuk membaca file yang ada yang dalam kasus ini adalah hello.html yang kemudian akan kita ubah menjadi string. Kemudian pada length akan kita dapatkan panjang stringnya. Kemudian responsenya adalah string formatting dimana Context Length adalah panjang file hello.html.
+
+## Refleksi 3
+
+![commit 2 ss](./README/reflection3.png)
+
+Perhatikan bahwa pada dasarnya kita sedang melakukan pengecekan request line. Disini kita ingin melakukan apakah situs yang kita ingin kunjungi benar atau tidak. Jika request line nya benar `"GET / HTTP/1.1\r\n"`, maka itu sudah sesuai ekspektasi kita. Hal itu akan membuat kita mengeset variabel status line dan file yang ingin kita tuju, dalam kasus ini hello.html atau 404.html.
