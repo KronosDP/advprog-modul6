@@ -25,3 +25,9 @@ Perhatikan bahwa pada dasarnya kita sedang melakukan pengecekan request line. Di
 Ketika saya pertama kali mencari /sleep, yang akan dilakukan adalah thread akan sleep selama 10 detik. Kemudian, thread ini akan berjalan kembali dengan normal. Jika kita memasukkan url yang biasa ke dalam ke dalam mesin pencari, yang akan terjadi adalah sleep masih akan tetap dijalankan dan kita tetap menunggu /sleep untuk selesai dijalankan.
 
 Perhatikan hal penting bahwa disini saya mengubah buf_reader dan request line menjadi tidak mutable. Hal inilah yang kemudian membuat kode "menunggu" ini perlu bekerja.
+
+## Refleksi 5
+
+Perhatikan bahwa threadpool sebenarnya mirip seperti sebuah queue. Sebenarnya implementasi dalamnya pada kasus ini menggunakan Vector, tapi idenya sebenarnya sama. Kemudian tugas-tugas yang berada di vektor ini akan dibagikan ke pada thread yang ada. Setiap thread akan kemudian mengeksekusi tugas yang ada. Hal inilah yang pada dasarnya dilakukan oleh ThreadPool dan Worker.
+
+Hal menarik yang saya dapati adalah pemahaman tentang sifat undeterministik dari program ini. Kita tidak bisa melakukan prediksi thread mana yang akan digunakan. Pada awalnya saya mengira thread yang akan digunakan adalah sesuai dengan urutanya, yaitu 0, 1, 2, dan 3 secara berurutan. Tetapi hal demikian tidak saya amati. Walaupun demikian, siklus yang saya amati adalah jika saya melakukan reload halaman yang sama, tanpa terlalu banyak hal lain yang dilakukan, bentuknnya adalah siklis. Dalam percobaan saya tersebut saya mendapat 0, 2, 1, 3 mendapatkan job dan thread tersebut akan loop kembali jika dilakukan reload.
